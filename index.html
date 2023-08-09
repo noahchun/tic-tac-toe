@@ -6,18 +6,19 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
-        <div id="board-container">
+        <div class="flexbox">
+            <div id="board-container">
+            </div>
+            <svg class="board" viewBox="0 0 300 300">
+                <!-- Vertical Lines -->
+                <line x1="100" y1="0" x2="100" y2="300" class="line" />
+                <line x1="200" y1="0" x2="200" y2="300" class="line" />
+                    
+                <!-- Horizontal Lines -->
+                <line x1="0" y1="100" x2="300" y2="100" class="line" />
+                <line x1="0" y1="200" x2="300" y2="200" class="line" />
+            </svg>
         </div>
-        <svg class="board" viewBox="0 0 300 300">
-            <!-- Vertical Lines -->
-            <line x1="100" y1="0" x2="100" y2="300" class="line" />
-            <line x1="200" y1="0" x2="200" y2="300" class="line" />
-                
-            <!-- Horizontal Lines -->
-            <line x1="0" y1="100" x2="300" y2="100" class="line" />
-            <line x1="0" y1="200" x2="300" y2="200" class="line" />
-        </svg>
-        
         <script src="script.js"></script>
     </body>
 </html>

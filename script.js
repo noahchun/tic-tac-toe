@@ -11,11 +11,12 @@ const gameBoard = (() => {
             row.classList.add('row');
             for (let j = 0; j < board[i].length; j++) {
                 const cell = document.createElement('div');
-                cell.classList.add('cell');
+                const className = 'cellRow' + (i + 1) + 'Col' +(j + 1);
+                cell.classList.add(className);
                 cell.textContent = board[i][j];
-                row.appendChild(cell);
+                boardContainer.append(cell);
             }
-            boardContainer.appendChild(row);
+            //boardContainer.appendChild(row);
         }
     }
     return {

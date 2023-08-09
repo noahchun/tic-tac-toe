@@ -1,3 +1,9 @@
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #board-container {
     display: grid;
     grid-template-columns: 3fr 3fr 3fr;
@@ -8,16 +14,8 @@
     gap: 2px;
     width: 300px;
     height: 300px;
-}
-
-.cell {
     z-index: 1;
-}
-
-.row {
-    display: flex;
     position: absolute;
-    z-index: 1;
 }
 
 .board {

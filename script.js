@@ -47,7 +47,6 @@ const gameBoard = (() => {
             currentPlayer = playerFactory("Player1", "X");
             gameStatus.textContent = currentPlayer.name + "'s turn. (" + currentPlayer.marker + ")";
         }
-        let cell1, cell2, cell3;
         const winConditions = [
             ["row1col1", "row1col2", "row1col3"], // Rows
             ["row2col1", "row2col2", "row2col3"],

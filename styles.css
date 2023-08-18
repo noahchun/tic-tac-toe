@@ -62,3 +62,16 @@ label {
     justify-content: center;
     margin-top: 10%;
 }
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}

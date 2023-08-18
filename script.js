@@ -4,8 +4,10 @@ const gameBoard = (() => {
         [' ',' ',' '],
         [' ',' ',' ']
     ];
+    let buttonContainer = document.getElementById("button-container");
     let currentPlayer;
     let gameStatus = document.querySelector(".game-status");
+    let gameOver = false;
     function createBoardUI() {
         currentPlayer = playerFactory("Player1", "X");
         const boardContainer = document.getElementById('board-container');
@@ -67,9 +69,23 @@ const gameBoard = (() => {
             if (rowCells.every(cell => cell.classList.contains("markedPlayer1"))) {
                 gameStatus.textContent = "PLAYER1 is the winner!";
                 boardContainer.classList.add('disable-click');
+                gameOver = true;
+                const resetButton = document.createElement('button');
+                resetButton.textContent = "Reset";
+                resetButton.addEventListener('click', () => {
+                    location.reload(); 
+                });
+                buttonContainer.appendChild(resetButton);
             } else if (rowCells.every(cell => cell.classList.contains("markedPlayer2"))) {
                 gameStatus.textContent = "PLAYER2 is the winner!";
                 boardContainer.classList.add('disable-click');
+                gameOver = true;
+                const resetButton = document.createElement('button');
+                resetButton.textContent = "Reset";
+                resetButton.addEventListener('click', () => {
+                    location.reload(); 
+                });
+                buttonContainer.appendChild(resetButton);
             }
             rowCells.length = 0;
         }
@@ -83,9 +99,23 @@ const gameBoard = (() => {
             if (colCells.every(cell => cell.classList.contains("markedPlayer1"))) {
                 gameStatus.textContent = "PLAYER1 is the winner!";
                 boardContainer.classList.add('disable-click');
+                gameOver = true;
+                const resetButton = document.createElement('button');
+                resetButton.textContent = "Reset";
+                resetButton.addEventListener('click', () => {
+                    location.reload(); 
+                });
+                buttonContainer.appendChild(resetButton);
             } else if (colCells.every(cell => cell.classList.contains("markedPlayer2"))) {
                 gameStatus.textContent = "PLAYER2 is the winner!";
                 boardContainer.classList.add('disable-click');
+                gameOver = true;
+                const resetButton = document.createElement('button');
+                resetButton.textContent = "Reset";
+                resetButton.addEventListener('click', () => {
+                    location.reload(); 
+                });
+                buttonContainer.appendChild(resetButton);
             }
             colCells.length = 0;
         }
@@ -99,33 +129,53 @@ const gameBoard = (() => {
             if (diagCells.every(cell => cell.classList.contains("markedPlayer1"))) {
                 gameStatus.textContent = "PLAYER1 is the winner!";
                 boardContainer.classList.add('disable-click');
+                gameOver = true;
+                const resetButton = document.createElement('button');
+                resetButton.textContent = "Reset";
+                resetButton.addEventListener('click', () => {
+                    location.reload(); 
+                });
+                buttonContainer.appendChild(resetButton);
             } else if (diagCells.every(cell => cell.classList.contains("markedPlayer2"))) {
                 gameStatus.textContent = "PLAYER2 is the winner!";
                 boardContainer.classList.add('disable-click');
+                gameOver = true;
+                const resetButton = document.createElement('button');
+                resetButton.textContent = "Reset";
+                resetButton.addEventListener('click', () => {
+                    location.reload(); 
+                });
+                buttonContainer.appendChild(resetButton);
             }
             diagCells.length = 0;
         }
         // check for draw
+        let allCellsMarked = true;
+        let drawCells = [];
         for (let i = 0; i <= 7; i++) {
-            let drawCells = [];
             for (let j = 0; j <= 2; j++) {
                 const cell = document.querySelector("." + winConditions[i][j]);
                 drawCells.push(cell);
             }
-            if (drawCells.every(cell => cell.classList.contains("markedPlayer1")) || drawCells.every(cell => cell.classList.contains("markedPlayer2"))) {
-                gameStatus.textContent = "DRAW!";
-                boardContainer.classList.add('disable-click');
-            }
+        }
+        if (drawCells.some(cell => !cell.classList.contains("markedPlayer1") && !cell.classList.contains("markedPlayer2"))) {
+            console.log("draw check");
+            allCellsMarked = false;
+        } else {
+            drawCells.length = 0;
+        }
+
+        if (allCellsMarked && gameOver== false) {
+            gameStatus.textContent = "DRAW!";
+            boardContainer.classList.add('disable-click');
+            const resetButton = document.createElement('button');
+                resetButton.textContent = "Reset";
+                resetButton.addEventListener('click', () => {
+                    location.reload(); 
+                });
+                buttonContainer.appendChild(resetButton);
         }
     }
-
-    function removeClickListeners() {
-        const cells = document.querySelectorAll(".cell");
-        cells.forEach(cell => {
-            cell.removeEventListener('click', cellClick)
-        })
-    }
-
     return {
         board,
         createBoardUI,
